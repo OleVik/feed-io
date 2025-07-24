@@ -24,7 +24,9 @@ class Link extends BaseLink
 
     protected function selectAlternateLink(NodeInterface $node, \DOMElement $element): void
     {
-        if (!$element->hasAttribute('rel') || $element->getAttribute('rel') != 'alternate') {
+        if ($element->hasAttribute('rel') === false
+            || $element->getAttribute('rel') != 'alternate'
+            || $node->getLink() !== null) {
             return;
         }
 
